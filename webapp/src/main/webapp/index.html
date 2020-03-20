@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Smart Cooking</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="script.js">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<style>
+  .modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 35%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color:grey;
+  color: white;
+  text-align: center;
+}
+
+.modal-body {
+  padding: 2px 16px;
+  text-align: center;
+}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: grey;
+  color: white;
+  text-align: center;
+  display: block !important;
+}
+
+.modal-footer #btnClose {
+
+  border: none;
+  color: black;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+</style>
+  </head>
+
+  <body>
+    <div class="container">
+      <section id="home" >
+        <div class="heading">
+          <h1>Welcome to Smart Cooking!</h1>
+        </div>
+      </section>
+      <section id="2">
+        <div class="container">
+         <div class="box_wrap">
+          <div id="myBtn" class="box1">
+            <p>Eggs</p>
+          </div>
+          <div id="myBtn1" class="box2">
+            <p>Rice</p>
+          </div>
+          <div id="myBtn2" class="box3">
+            <p>Broccoli</p>
+          </div>
+        </div>
+        <div class="box_wrap2">
+          <div id="myBtn3" class="box4">
+              <p>Steak</p>
+          </div>
+        <div id="myBtn4" class="box5">
+          <p>Pasta</p>
+        </div>
+        <div id="myBtn5" class="box6">
+          <p>Noodles</p>
+        </div>
+      </div>
+
+
+
+  </section>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <!-- <span class="close">&times;</span> -->
+      <span style="margin-left: 180px; font-size: 24px;">Recipie Maker</span>
+    </div>
+    <div class="modal-body">
+      <p>You are all Set!</p>
+      <p>Make sure your Sensor is in place!</p>
+    </div>
+    <div class="modal-footer">
+        <button id="btnClose">OK</button>
+    </div>
+  </div>
+
+</div>
+  </div>
+  <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+    
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+    var btn1 = document.getElementById("myBtn1");
+    var btn2 = document.getElementById("myBtn2");
+    var btn3 = document.getElementById("myBtn3");
+    var btn4 = document.getElementById("myBtn4");
+    var btn5 = document.getElementById("myBtn5");
+    
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    
+    var btnClose = document.getElementById("btnClose");
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+      modal.style.display = "block";
+		  
+	  getAjax('http://localhost:5124/api/v1/smartCook/temprature/eggs'+Math.floor(Math.random() * 10)+'/77', function(data){
+    var json = JSON.parse(data);
+    console.log(json); 
+		});
+	  
+    }
+
+    btn1.onclick = function() {
+      modal.style.display = "block";
+	  
+	  	  getAjax('http://localhost:5124/api/v1/smartCook/temprature/rice'+Math.floor(Math.random() * 10)+'/88', function(data){
+    var json = JSON.parse(data);
+    console.log(json); 
+		});
+
+    }
+
+    btn2.onclick = function() {
+      modal.style.display = "block";
+	  
+	  	  getAjax('http://localhost:5124/api/v1/smartCook/temprature/broccoli'+Math.floor(Math.random() * 10)+'/99', function(data){
+    var json = JSON.parse(data);
+    console.log(json); 
+		});
+
+    }
+
+    btn3.onclick = function() {
+      modal.style.display = "block";
+	  	  getAjax('http://localhost:5124/api/v1/smartCook/temprature/steak'+Math.floor(Math.random() * 10)+'/100', function(data){
+    var json = JSON.parse(data);
+    console.log(json); 
+		});
+
+    }
+
+    btn4.onclick = function() {
+      modal.style.display = "block";
+	  	  getAjax('http://localhost:5124/api/v1/smartCook/temprature/pasta'+Math.floor(Math.random() * 10)+'/120', function(data){
+    var json = JSON.parse(data);
+    console.log(json); 
+		});
+
+    }
+    
+    btn5.onclick = function() {
+      modal.style.display = "block";
+	  	  getAjax('http://localhost:5124/api/v1/smartCook/temprature/noodles'+Math.floor(Math.random() * 10)+'/77', function(data){
+    var json = JSON.parse(data);
+    console.log(json); 
+		});
+
+    }
+    // When the user clicks on <span> (x), close the modal
+    // span.onclick = function() {
+    //   modal.style.display = "none";
+    // }
+
+    btnClose.onclick = function() {
+      modal.style.display = "none";
+	  
+    }
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+	
+function getAjax(url, success) {
+    var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+    xhr.open('GET', url);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState>3 && xhr.status==200) success(xhr.responseText);
+    };
+    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    xhr.send();
+    return xhr;
+}
+
+	
+    </script>
+  </body>
+</html>
