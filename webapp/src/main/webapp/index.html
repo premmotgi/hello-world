@@ -99,7 +99,7 @@
 </style>
   </head>
 
-  <body>
+  <body onload="onloadexecute()">
     <div class="container">
       <section id="home" >
         <div class="heading">
@@ -145,7 +145,7 @@
       <span style="margin-left: 180px; font-size: 24px;">Recipie Maker</span>
     </div>
     <div class="modal-body">
-      <p>You are all Set!</p>
+      <p>You are all Set </p><p id="pers"></p><p>!</p>
       <p>Make sure your Sensor is in place!</p>
     </div>
     <div class="modal-footer">
@@ -256,6 +256,20 @@ function getAjax(url, success) {
     return xhr;
 }
 
+	  var person;
+function onloadexecute(){
+
+	 person = prompt("Please enter your name", "Harry Potter");
+
+if (person == null || person == "") {
+  var txt = "User cancelled the prompt.";
+} else {
+document.getElementById('pers').innerHTML = person;
+}
+}
+	  
+	  
+	  
 	
     </script>
   </body>
